@@ -97,8 +97,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>Our objective is to create an AI player that performs well in Hearts, as measured by the number of total points accrued in a game. </p>
-                <p>We will compare the score for our “smart” player that uses the Monte Carlo algorithm to the scores of our “semi-smart” player that plays using a naive approach.</p>
+                <p style="font-size:25px">Through this project we seek to create an AI player that performs well in Hearts.
+                  The final goal is to program an intelligent player that wins with more than random chance against naive players that use basic strategy to select moves.
+                </p>
+
+                    <h2 class="section-heading">The Rules of the Game</h2>
+
+                    <p>Hearts is a four-person game in which each individual plays to avoid winning points.</p>
+                    <p>Points are assigned by winning tricks that contains Hearts (1 point each) or the Queen of Spades (13 points). Tricks are won by playing the highest card of the leading suit.</p>
+                    <p>At the start of a new trick, the first card played becomes the <i>leading suit</i> and all players must play a card of the same suit if they have one in their hands. A card from any of the non-leading suits can not win a trick, but can assign points.</p>
+                    <p>A player can not lead with Hearts until another player has <i>broken</i> Hearts by playing one when they contain no cards of the leading suit.</p>
+                    <p>Play begins with the 2 of Clubs each round and rounds continue until a player has exceeded 100 points. At this point, the player with the lowest amount of points has won the game.
+                    </p>
+
             </div>
         </div>
     </div>
