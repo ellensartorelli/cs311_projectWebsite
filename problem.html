@@ -61,7 +61,7 @@
                       <a href="methods.html">Methods</a>
                   </li>
                   <li>
-                      <a href="results.html">Reults</a>
+                      <a href="results.html">Results</a>
                   </li>
                   <li>
                       <a href="conclusions.html">Conclusions</a>
@@ -97,19 +97,26 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p style="font-size:25px">Through this project we seek to create an AI player that performs well in Hearts.
-                  The final goal is to program an intelligent player that wins with more than random chance against naive players that use basic strategy to select moves.
-                </p>
+                <p style="font-size:25px">The goal of this project is to create an artificially intelligent agent that performs well in Hearts. Our intelligent program will overcome challenges of imperfect information digital game-play to compete successfully against players that use Greedy and Random approaches.</p>
 
-                    <h2 class="section-heading">The Rules of the Game</h2>
+                <br>
+                <h2>Rules of hearts</h2>
+                  <ul>
+                    <li>Hearts is a trick-based card game played with four players and a standard deck of 52 cards. Each individual starts with an initial hand of 13 cards and plays to avoid winning points. </li>
+                    <li>Points are assigned by winning tricks that contains Hearts (1 point each) or the Queen of Spades (13 points). Tricks are won by playing the highest card of the leading suit.  </li>
+                    <li>At the start of a new trick, the first card played becomes the leading suit and all players must play a card of the same suit if they have one in their hands. A card from any of the non-leading suits can not win a trick, but can assign points.</li>
+                    <li>A player can not lead with Hearts until another player has broken Hearts by playing a Heart when void in cards of the leading suit.</li>
+                    <li>The first round of game play begins with the 2 of Clubs and rounds continue until a player has exceeded 100 points. At that moment, the player with the lowest amount of points has won the game.</li>
+                  </ul>
 
-                    <p>Hearts is a four-person game in which each individual plays to avoid winning points.</p>
-                    <p>Points are assigned by winning tricks that contains Hearts (1 point each) or the Queen of Spades (13 points). Tricks are won by playing the highest card of the leading suit.</p>
-                    <p>At the start of a new trick, the first card played becomes the <i>leading suit</i> and all players must play a card of the same suit if they have one in their hands. A card from any of the non-leading suits can not win a trick, but can assign points.</p>
-                    <p>A player can not lead with Hearts until another player has <i>broken</i> Hearts by playing one when they contain no cards of the leading suit.</p>
-                    <p>Play begins with the 2 of Clubs each round and rounds continue until a player has exceeded 100 points. At this point, the player with the lowest amount of points has won the game.
-                    </p>
+                  <br>
+                  <h2>The Challenge of this Project</h2>
+                    <p>Unlike Chess, Checkers and Tic-Tac-Toe, games in which pieces are visible at all times, Hearts is a stochastic game of imperfect information, hinging on a partially observable environment, as each player’s hand is concealed from other players. If we could see our opponents’ cards, we would be able to use a standard search algorithm to play, perhaps even finding optimal strategies and solutions. Without this information, developing a winning strategy becomes a much more complicated problem. </p>
+                    <p>Given the knowledge of the cards that have been played and the cards one currently holds in his or her hand, the number of potential distributions for the remaining cards is extremely large. In the worst case - during the first round - a player only knows the 13 hards in her hand, leaving an huge number of possible card configurations, as displayed below:</p>
 
+                    <img class="img-responsive" src="img/screenshot.png" alt="">
+
+                    <p>In any given trick, the player must choose from up to 13 actions, or cards to play. Enumerating possible outcomes becomes impossible given the size of the state space, making devising an optimal strategy impossible. Given that Hearts is a relatively easy game to learn, it is interesting to consider how hard it is to truly master. </p>
             </div>
         </div>
     </div>

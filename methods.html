@@ -61,7 +61,7 @@
                       <a href="methods.html">Methods</a>
                   </li>
                   <li>
-                      <a href="results.html">Reults</a>
+                      <a href="results.html">Results</a>
                   </li>
                   <li>
                       <a href="conclusions.html">Conclusions</a>
@@ -86,7 +86,6 @@
                     <div class="page-heading">
                         <h1>Methods</h1>
                         <hr class="small">
-                        <span class="subheading">This is what I do.</span>
                     </div>
                 </div>
             </div>
@@ -97,12 +96,83 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-              <h1>Programming</h1>
-              <p>This project involves programming a naive player that plays using a Greedy Approach that adheres to the basic rules of the game.</p>
-              <h2>Naive Players</h2>
-                <p> General outline... bullet points with data strucures?</p>
-              <h2>Intelligent Player</h2>
-                <p> General outline... bullet points with data strucures?... talk about constraints and AI things. Make us sound smart.</p>
+              <p>Our project is implemented through a collection of classes in Java that allow us to stimulate a four-player game of Hearts and maintain imperfect information. In addition to Deck and Card classes that serve as the obviously building-blocks of our program as they allow for dealing, comparing and recording cards played in the game, we also have individual classes for the Greedy, Random and Intelligent players that will be competing in our program.</p>
+
+              <br>
+              <h2>The Greedy Player</h2>
+
+
+              <p>As the goal of the game is not to win tricks, this player plays the smallest card under normal game-play, dumps their highest card when void in the leading suit and naively avoids the Queen of Spades. This player mimic the most basic human strategy which is described algorithmically and visually below.</p>
+
+
+          <ol>
+              <li>If first card in trick, pick the smallest card</li>
+              <li>Otherwise
+                  <ol type="a">
+                    <li>If the player is void in the leading suit
+                  	   <ol>
+                          <li>If the player can play Queen of Spade, pick Queen of Spade </li>
+                          <li>If the player can play Hearts, pick the largest card of Hearts </li>
+                          <li>Otherwise, pick the largest card</li>
+              	         </ol>
+                    </li>
+                   <li> Otherwise
+                      <ol>
+                        <li>If the player can pick a smaller card than the first card, pick the largest that is smaller than the first card </li>
+                        <li>Otherwise
+                          <ol type="a">
+                            <li>If the player is not the last player, pick the smallest card </li>
+                            <li>Otherwise, pick the largest card</li>
+                          </ol>
+                        </li>
+                      </ol>
+                    </ol>
+                  </ol>
+
+              <p>While the pseudo-code may not appear too complex, the visual representation of the logic tree clearly demonstrates the large branching factor of even this very simple algorithm.</p>
+
+              <img class="img-responsive" src="img/Random Player.png" alt="">
+
+              <br>
+              <br>
+              <h2>The Random Player</h2>
+              <p>The Random player class picks valid random cards. Therefore, while it plays within the rules of the game, it fails to strategize. Four Random players will be used as a control group by being played against themselves to determine the outcome of a Hearts game determined by random chance and three Random players will compete against and an Intelligent Player to ensure that the Intelligent Player does not merely take advantage of the Greedy players predictable and greedy strategy. The pseudo-code for the random player is below:</p>
+
+              <ol>
+                  <li>If leading round, check if Hearts is broken</li>
+                      <ol type="a">
+                        <li>If Hearts is broken, pick random card</li>
+                        <li>Otherwise if Hearts is not broken, pick random non-Heart card</li>
+                     </ol>
+                     <li>If not leading</li>
+                         <ol type="a">
+                           <li>If you have cards in suit, play one at random</li>
+                           <li>If you do not have cards in suit pick random card</li>
+                        </ol>
+              </ol>
+
+              <br>
+              <br>
+              <h2>The Intelligent Player</h2>
+              <p>Our intelligent player was a compromise between a rule based player and a player equipped with full Monte Carlo Tree Search functionality. On any given trick, this player will perform one random playout for each valid card choice in her hand, then choose the card with the best outcome. A random playout is truly random in that we do not know the hands of our opponents, rather, we simply choose random cards to play that have not yet been seen. We chose this approach, first implemented by Anthony Wong and Wells Santo, for it’s unique, computationally cheap approach. Though modeling imperfect information through randomness is not a fully comprehensive methodology, and can, during the playout, simulate illegal moves, it usually returns valid card configurations that could reasonably approximate actual plays. Furthermore, one playout will take at most 13 moves before reaching the end of the round, and returning the total points earned. We then use the total points earned in a playout to evaluate the “goodness” of the cards in our hand, and choose the best. </p>
+
+              <p>On any given turn:</p>
+              <ol>
+              <li>optimalPoints = 0</li>
+              <li>optimalCard = first valid card</li>
+              <li>For valid card in hand:
+                <ol type="a">
+	               <li>Play out the full round with the currentCard</li>
+	                <li>If the number of points earned by our currentCard is less than optimalPoints:
+                  <ol>
+		                  <li>optimalPoints = pointsEarned</li>
+		                    <li>optimalCard = currentCard</li>
+                  </ol>
+                </li>
+              </ol>
+              </li>
+              <li>Play optimalCard</li>
+            </ol>
 
             </div>
         </div>
